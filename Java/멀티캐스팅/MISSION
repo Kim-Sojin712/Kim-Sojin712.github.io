@@ -1,0 +1,15 @@
+미션 (11.12)
+
+멀티캐스팅
+다음 기능이 모두 수행되도록 작성.
+1. ClientA.java, ClientB.java, ClientC.java, ClientD.java, ClientE.java 파일 생성
+2. ClientA : 10000번 포트에 바인딩 (받는기능)
+   ClientB : 10000번 포트에 바인딩 (보내는기능 + 받는기능)
+   ClientC : 20000번 포트에 바인딩 (받는기능)
+   ClientD : 20000번 포트에 바인딩 (받는기능 + 보내는기능)
+   ClientE : 임의 포트에 바인딩 (보내는기능 + 받는기능)
+3. ClientB-->ClientA와 ClientB로 "반갑습니다" 멀티캐스팅으로 보내기 (실행순서. ClientA->ClientB)
+4. ClientE-->ClentC와 ClientD로 "안녕하세요" 멀티캐스팅으로 보내기 + 
+   ClientD-->CleintE한테 "어서와"라고 회신 (실행순서. ClientA->ClientC->ClientD->ClientE)
+ 
+* 추가 옵션: 가능한 경우 쓰레드 또는 루프를 이용하여 반복적으로 보낼 수 있는 기능도 추가
