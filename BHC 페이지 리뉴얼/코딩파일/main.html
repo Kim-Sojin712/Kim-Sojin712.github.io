@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BHC</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="shortcut icon" href="images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=PT+Serif&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap');
+@font-face {
+    font-family: 'TmonMonsori';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+     font-family: 'S-CoreDream-4Regular';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+* { margin:0; padding:0;}
+body {font-family: 'Noto Sans KR', sans-serif; -ms-overflow-style: none;}
+::-webkit-scrollbar { display: none; }
+a {text-decoration: none;}
+li {list-style-type: none;}
+.clear {
+    clear:both;
+}
+
+#header {
+    width:100%;
+    height:160px;
+    /* background-color:lightgreen; */
+}
+.top { 
+    width:1200px;
+    height:76px;
+    /*background-color:lightcoral;*/
+    margin:0 auto;
+}
+.logo {
+    width:177px;
+    height:50px;
+    margin-top: 19px;
+    /*background-color: aqua;*/
+    float:left;
+}
+#search {
+    float: left;
+    font-size: 14px;
+    margin: 35px 0 0 260px;
+    /* border: solid 1px #000000; */
+}
+#search #search_form {
+    float: left;
+    padding-top: 2px;
+}
+#search img {
+    border-bottom: solid 1px #000000;
+    vertical-align: bottom;
+    padding-bottom: 4px;
+}
+#search #search_form input {
+    width: 280px;
+    height: 34px;
+    border: 0;
+    background-color: white;
+    border-bottom: solid 1px #000000;
+    margin-right: 5px;
+    text-align: center;
+    outline: none;
+    /* color: black; */
+}
+#top_menu {
+    float: right;
+    margin-top: 46px;
+    /* border: solid 1px #000000; */
+    font-size: 14px;
+}
+#top_menu li {
+    display: inline;
+    margin-left: 10px;
+}
+#top_menu a {
+    color: black;
+}
+.lang select {
+    border-radius: 11.5px;
+    border: solid 1px #c4c4c4;
+    outline: 0;
+}
+.all {
+    display: flex;
+    flex-flow: row wrap;
+    /*min-width: 280px;*/
+    /*margin-top: 84px;*/
+}
+.menu {
+    width: 100%;
+    height: 84px; 
+    margin: 0 auto;
+    
+    background-color:rgba(255,255,255,1);
+    /*position: fixed;*/
+    padding:30px 0;
+    position: absolute;
+    z-index: 999999;
+}
+.fix {
+    position: fixed;
+    top: 0;
+    animation: down 0.5s ease;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+}
+@keyframes down {
+    0%{
+        transform: translateY(-84px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+.menu ul {
+    width: 1200px;
+    height: 84px; 
+    margin: 0 auto;
+    /*padding:30px 0;*/
+    text-align: center;
+    /* background-color: sienna; */
+}
+.menu > ul > li {
+    display:inline-block;
+    position: relative;
+    font-size: 18px;
+    font-weight:bold;
+}
+#inb nav {
+    border-bottom: solid 1px #c3c3c3;
+}
+.menu > ul > li > a {
+    display:block;
+    width: 180px;
+    height: 84px;
+    color:#000000;
+    position: relative;
+}
+.menu > ul > li > a:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    width: 0;
+    height: 2px;
+    background-color: #db6e2c;
+    transition: all 0.5s;
+}
+.menu > ul > li > a:hover:after{
+    left: 0;
+    width: 100%;
+}
+.menu > ul > li > a:hover{
+    color:#db6e2c;
+}
+
+
+
+#container {
+    width: 100%;
+    height: 3617px;
+    /* background-color:lightblue; */
+    clear:both;
+}
+.main_banner {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+
+}
+.orderall {
+    width: 100%;
+    /* background-color:white; */
+}
+.order {
+    width:1221px;
+    height: 295px;
+    margin:0 auto;
+    padding-top:2px;
+    /* background-color: aqua; */
+}
+.order_item {
+    text-align: center;
+    float:left;
+    display:inline;
+    margin: 40px 100px 70px 100px;
+}
+.order_name1 {
+    padding-top:30px;
+    font-size: 48px;
+    color:#502e00;
+}
+.order_name2 {
+    padding-top:30px;
+    padding-left:5px;
+    font-size: 48px;
+    color:#edc300;
+}
+.order_name3 {
+    padding-top:30px;
+    font-size: 48px;
+    color:#db6e2c;
+}
+.Cmenu {
+    width:100%;
+    height:826px;
+    background:#f3f3f3;
+}
+.mTitle{
+    padding-top: 40px;
+    padding-bottom: 27px;
+    text-align: center;
+}
+.mTitle #mark {
+    font-size:150px;
+    margin-bottom: -130px;
+    font-weight: lighter;
+    font-family: 'Nanum Myeongjo';
+}
+.mTitle #eng {
+    font-size: 50px;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-family:"Sylfaen"
+}
+.mTitle #kor {
+    font-size: 25px;
+    /* font-weight: bold; */
+}
+.mMore {
+    width: 1200px;
+    margin:0 auto;
+    padding-right:10px;
+}
+.mMore img {
+    float:right;
+}
+.CmMenu {
+    width: 1220px;
+    margin:15px auto;
+    padding-top: 10px;
+    padding-left: 3px;
+    /* background:lime; */
+
+}
+.CmMenu #wrap {
+        position: relative;
+}
+.CmMenu img {
+    padding:0 8px;
+}
+.CmMenu .aaa h4 {
+    color:#502e00;
+    font-size:30px;
+    font-family:"Sylfaen"
+}
+
+.CmMenu .aaa_a h3 {
+    color: #ffffff;
+    font-size: 33px;
+}
+.CmMenu .zzz h4 {
+    color: #edc300;
+    font-size: 30px;
+    font-family: "Sylfaen"
+}
+.CmMenu .xxx h3 {
+    color: #ffffff;
+    font-size: 33px;
+}
+.CmMenu .yyy h4 {
+    color: #ff4d4d;
+    font-size: 30px;
+    font-family: "Sylfaen"
+}
+.CmMenu .jjj h3 {
+    color: #ffffff;
+    font-size: 33px;
+}
+.CmMenu .ooo h4 {
+    color: #db6e2c;
+    font-size: 30px;
+    font-family: "Sylfaen"
+}
+.CmMenu .sss h3 {
+    color: #ffffff;
+    font-size: 33px;
+}
+.CmMenu .aaa {
+    position: absolute;
+    top: 17%;
+    left: 12%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.CmMenu .aaa_a {
+    position: absolute;
+    top: 30%;
+    left: 12%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+
+.CmMenu .zzz {
+    position: absolute;
+    top: 17%;
+    left: 37%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.CmMenu .xxx {
+    position: absolute;
+    top: 30%;
+    left: 37%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.CmMenu .yyy {
+    position: absolute;
+    top: 17%;
+    left: 62%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.CmMenu .jjj {
+    position: absolute;
+    top: 30%;
+    left: 62%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.CmMenu .ooo {
+    position: absolute;
+    top: 17%;
+    left: 87%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.CmMenu .sss {
+    position: absolute;
+    top: 30%;
+    left: 87%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.ad_banner {
+    width: 1920px;
+    margin: 0 auto;
+    display:flex;
+    height: 250px;
+}
+.ad_banner a {
+    color:#000000;
+}
+.ad_banner #ad_banner_left {
+    float: left;
+    background-image: url("images/ad_banner1_img.png");
+    background-color: #f6d4af;
+    width: 50%;
+    text-align: center;
+}
+.ad_banner #ad_banner_left ul {
+    margin-top:40px;
+    margin-left: 20px;
+    font-size: 38px;
+}
+.ad_banner #ad_banner_left #left_first {
+    color: #63330f;
+    font-family:'TmonMonsori'
+}
+.ad_banner #ad_banner_left #left_second {
+    font-weight: bold;
+    /* font-family: 'S-CoreDream-4Regular'; */
+}
+.ad_banner #ad_banner_left #left_third {
+    /* font-family: 'S-CoreDream-4Regular'; */
+}
+.ad_banner #ad_banner_right {
+    float:right;
+    background: #f9cadc;
+    background-image: url("images/ad_banner2_img.png");
+    width: 50%;
+    text-align: center;
+}
+.ad_banner #ad_banner_right ul {
+    margin-top:38px;
+    margin-left: 20px;
+    font-size: 36px;
+}
+.ad_banner #ad_banner_right #right_first {
+    color: #63330f;
+    font-weight: bold;
+    font-size:38px;
+}
+.ad_banner #ad_banner_right #right_second {
+    margin-top:5px;
+}
+.ad_banner #ad_banner_right #right_third {
+    margin-top: -10px;
+}
+.ad_banner #ad_banner_right #right_third_color {
+    color:#db6e2c;
+}
+.info {
+    width: 1220px;
+    height: 610px;
+    margin:0 auto;
+    display:flex;
+    margin-top: 160px;
+    position: relative;
+    /* background:pink; */
+}
+.box1 {
+    width: 431px;
+    height: 605px;
+    background-color: rgba(255,255,100,0);
+    box-shadow: 8px 8px 10px #c4c4c4;
+    border-radius: 30px;
+    margin-right: 17px;
+    margin-left:7px;
+    /* z-index: -1; */
+}
+.box1 #wrap {
+    position: relative;
+}
+.box1 #wrap .yl {
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box1 h1 {
+    color: #000000;
+    font-size: 25px;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box1 h3 {
+    color: #000000;
+    font-size: 17px;
+    font-weight: normal;
+    position: absolute;
+    top: 91%;
+    left: 50%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 {
+    width: 759px;
+    height: 605px;
+    background-color: rgba(255,100,100,0);
+    box-shadow: 8px 8px 10px #c4c4c4;
+    border-radius: 30px;
+    /* z-index: -1; */
+}
+.box2 #wrap {
+    position: relative;
+}
+.box2 h1 {
+    color: #edc300;
+    font-weight: bold;
+    font-size: 48px;
+    position: absolute;
+    top: 11%;
+    left: 54%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .abc{
+    position: absolute;
+    top: 13.5%;
+    left: 33%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 h3 {
+    color: #502e00;
+    font-weight: bold;
+    font-size: 22px;
+    position: absolute;
+    top: 18%;
+    left: 54%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .aa{
+    color: #db6e2c;
+    font-size: 30px;
+    position: absolute;
+    top: 35.5%;
+    left: 61%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .aa_a{
+    color: #000000;
+    font-size: 24px;
+    position: absolute;
+    top: 42%;
+    left: 61%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .aa_b{
+    position: absolute;
+    top: 36.5%;
+    left: 28%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .bb{
+    color: #db6e2c;
+    font-size: 30px;
+    position: absolute;
+    top: 60%;
+    left: 61%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .bb_a{
+    color: #000000;
+    font-size: 24px;
+    position: absolute;
+    top: 66.5%;
+    left: 61%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .bb_b{
+    position: absolute;
+    top: 63%;
+    left: 28%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .cc{
+    color: #db6e2c;
+    font-size: 30px;
+    position: absolute;
+    top: 84.5%;
+    left: 61%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .cc_a{
+    color: #000000;
+    font-size: 24px;
+    position: absolute;
+    top: 91%;
+    left: 61%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.box2 .cc_b{
+    position: absolute;
+    top: 87.5%;
+    left: 28%;
+    text-align: center;
+    transform: translate( -50%, -50% );
+}
+.info img {
+    padding-right: 17px;
+}
+.instar {
+    width:100%;
+    height: 520px;
+    background-color:#f3f3f3;
+    margin-top: 163px;
+}
+.instalogo {
+    margin: 0 auto;
+    padding-top: 30px;
+    width: 518px;
+    /* background-color: khaki; */
+}
+.instalogo #wrap {
+    position: relative;
+}
+.instalogo div h1 {
+    color: #000000;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    text-align: center;
+    font-size: 36px;
+    transform: translate( -50%, -50% );
+    /* background-color: lightsalmon; */
+}
+.instalogo div h1 div {
+    display: inline;
+}
+.instalogo div h1 .c {
+    color: #db6e2c;
+}
+.instalogo div h3 {
+    color: #000000;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    width: 300px;
+    text-align: center;
+    font-size: 24px;
+    transform: translate( -50%, -50% );
+    /* background-color: lightsalmon; */
+}
+.instapic {
+    width: 100%;
+    height: 245px;
+    margin-top: 20px;
+    /*background-color: darkorange;*/
+    text-align: center;
+}
+.instapic img {
+    height: 245px;
+    width: 245px;
+    display:inline-block;
+}
+/* .instapic .a {
+    padding-right: 27.6px;
+}
+.instapic #b {
+    padding-right: 27.7px;
+
+} */
+.instapic #a {
+    padding-right: 27.7px;
+}
+/* .instapic .b {
+    float: right;
+} */
+#footer {
+    width: 100%;
+    height: 209px;
+    /* padding-top:4%; */
+    /* background-color: lightseagreen; */
+}
+#footerTop{
+    width:100%;
+    height:59px;
+    background:#eae1cd;
+    display:flex;
+}
+#footer_line {
+    width:1285px;
+    height: 50px;
+    margin:0 auto;
+    text-align: center;
+}
+#footer_menu{
+    float:left;
+    margin:0 auto;
+    padding-left: 2rem;
+}
+#footer_menu ul {
+    height:80px;
+	margin-top:15px;
+    /* background-color: lightyellow; */
+
+}
+#footer_menu li {
+    display: inline;
+    padding: 10px 10px;
+    color:#db6e2c;
+    font-size:18px;
+}
+#footer_menu li a{
+    color:#db6e2c;
+}
+#familysite {
+    float:right;
+    height:42px;
+    width:201px;
+    margin-right: 20px;
+    margin-top:5px;
+    border: none;
+    -webkit-appearance: none;
+    /*background-color: royalblue;*/
+}
+#familysite select {
+    padding-left:25px;
+    background: #ffffff url("images/footer_arrow.png") no-repeat 90% 50%;
+    outline: 0;
+}
+#familysite option {
+    font-size:18px;
+    /* text-align:center; */
+    text-align:left;
+}
+#footer_info {
+    margin:0 auto;
+    width:1285px;
+    margin-top:10px;
+    padding-left: 2rem;
+}
+#footer_info ul {
+    width:1000px;
+    height:15px;
+	margin-top:25px;
+}
+#footer_info ul li {
+    display: inline;
+    padding: 10px 10px;
+    color:#adabac;
+}
+#footer_under {
+    width:1285px;
+    height: 50px;
+    margin:0 auto;
+    text-align: center;
+    padding-left: 2rem;
+}
+#footer_copyright {
+    margin-top:10px;
+    float:left;
+}
+#footer_copyright ul {
+    width:1000px;
+    height:15px;
+	margin-top:25px;
+    display: inline;
+}
+#footer_copyright ul li {
+    display: inline;
+    padding: 10px 10px;
+    color:#757575;
+}
+#footer_sns {
+    margin-right: 40px;
+}
+#footer_sns img {
+    width:22px;
+    height:22px;
+}
+#footer_sns ul li {
+    display:inline;
+    float:right;
+    margin-left:10px;
+    font-size: 15px;
+    color:#afafaf;
+}
+#footer_sns a {
+    color:#afafaf;
+}
+</style>
+</head>
+<body>
+<div id="header">
+    <div class="top">  <!--로고, 주소, 로그인 -->
+        <div class="logo">
+            <h1><a href="#"><img src="images/logo.png" alt="bhc"></a></h1>
+        </div>
+        <!--위치-->
+        <div id="search">
+            <div id="search_form"><img src="images/비행기.png"><input type="text" placeholder="주변 매장의 프로모션을 확인해보세요!" onclick="alert('위치접근허용을 승인해주세요.')"></div>
+        </div>
+        <div id="top_menu">  <!--로그인, 회원가입, 언어-->
+            <ul>
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li>
+                    <a href="#" class="lang">
+                        <select>
+                            <option value="/main?locale=ko">KOR</option>
+                            <option value="/main?locale=en">ENG</option>
+                        </select>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <nav class="menu" class="clear">  <!--네비게이션 바-->
+        <ul>
+            <li><a href="#">메뉴안내</a></li>
+            <li>|</li>
+            <li><a href="#">매장안내</a></li>
+            <li>|</li>
+            <li><a href="#">창업안내</a></li>
+            <li>|</li>
+            <li><a href="#">BHC소식</a></li>
+            <li>|</li>
+            <li><a href="#">BHC소개</a></li>
+            <li>|</li>
+            <li><a href="#">고객센터</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="all">
+    <div id="container" class="clear">
+        <!--메인 배너-->
+        <div class="main_banner">
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <a href="#"><img src="images/main_banner-1.jpg" class="d-block w-100" alt="..."></a>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <a href="#"><img src="images/main_banner-2.jpg" class="d-block w-100" alt="..."></a>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <a href="#"><img src="images/main_banner-3.jpg" class="d-block w-100" alt="..."></a>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <a href="#"><img src="images/main_banner-4.jpg" class="d-block w-100" alt="..."></a>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="orderall">
+            <!--e 쿠폰 주문, 배달 주문, 포장 주문-->
+            <div class="order">
+                <div class="order_item">
+                    <ul>
+                        <a href="#"><li><img src="images/free-icon-qr-code.png" width="86px" height="82px"></li></a>
+                        <a href="#"><li class="order_name1">e-쿠폰 주문</li></a>
+                    </ul>
+                </div>
+                <div class="order_item">
+                    <ul>
+                        <a href="#"><li><img src="images/premium-icon-fast-delivery.png" width="98px" height="82px"></li></a>
+                        <a href="#"><li class="order_name2">배달 주문</li></a>
+                    </ul>
+                </div>
+                <div class="order_item">
+                    <ul>
+                        <a href="#"><li><img src="images/free-icon-food-package.png" width="86px" height="82px"></li></a>
+                        <a href="#"><li class="order_name3">포장 주문</li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="Cmenu">
+            <!--치킨 메뉴-->
+            <div class="mTitle" id="text">
+                <ul id="mark">
+                    <li>”</li>
+
+                </ul>
+                <ul id="eng">
+                    <li>BHC CHICKEN</li>
+                </ul>
+                <ul id="kor">
+                    <li>고객을 위한 깨끗한 치킨</li>
+                </ul>
+            </div>
+            <div class="mMore">
+                <a href="#"><img src="images/btn_more.png"></a>
+            </div>
+            <div class="CmMenu">
+                <div id="wrap">
+                    <a href="#"><img src="images/뿌링클.jpg" alt="뿌링클사진"></a>
+                    <a href="#"><img src="images/뿌링치즈볼.jpg" alt="뿌링치즈볼"></a>
+                    <a href="#"><img src="images/양념맵소킹.jpg" alt="양념맵소킹"></a>
+                    <a href="#"><img src="images/싸이순살.jpg" alt="싸이순살"></a>
+                    <div class="aaa"><a href="#"><h4>Best Hot</h4></a></div>
+                    <div class="aaa_a"><a href="#"><h3>뿌링클</h3></a></div>
+                    <div class="zzz"><a href="#"><h4>Cheese Ball</h4></a></div>
+                    <div class="xxx"><a href="#"><h3>뿌링치즈볼</h3></a></div>
+                    <div class="yyy"><a href="#"><h4>Spicy Chicken</h4></a></div>
+                    <div class="jjj"><a href="#"><h3>양념맵소킹</h3></a></div>
+                    <div class="ooo"><a href="#"><h4>Original</h4></a></div>
+                    <div class="sss"><a href="#"><h3>싸이순살</h3></a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad_banner">
+            <!--네이버 쇼핑 광고 배너-->
+            <div id="ad_banner_left">
+                <a href="#">
+                    <ul>
+                        <li id="left_first">반려동물도 즐길 수 있는</li>
+                        <li id="left_second">#프리미엄#웰빙</li>
+                        <li id="left_third">멍쿠키</li>
+                    </ul>
+                </a>
+            </div>
+            <div id="ad_banner_right">
+                <a href="#">
+                    <ul>
+                        <li id="right_first">HMR 가정 간편식</li>
+                        <li id="right_second">국내산 닭가슴살로 만들어</li>
+                        <li id="right_third">더욱 부드럽고 깔끔한 <span id="right_third_color">리얼 닭가슴살</span></li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+
+        <div class="info">
+            <!--유튜브 영상, 창업정보-->
+            <div class="box1">
+                <div id="wrap">
+                    <a href="#"><img src="images/youtube.png"></a>
+                    <div class="yl"><a href="#"><img src="images/youtubelogo.png"></a></div>
+                    <div><a href="#"><h1>BHC 유튜브</h1></a></div>
+                    <div><a href="#"><h3>바로보기</h3></a></div>
+                </div>
+            </div>
+            <div class="box2">
+                <div id="wrap">
+                    <a href="#"><img src="images/창업정보.png"></a>
+                    <div><a href="#"><h1>창업 정보</h1></a></div>
+                    <div><a href="#"><h3>BHC만의 맛의 비밀</h3></a></div>
+                    <div class="abc"><a href="#"><img src="images/창업정보1.png"></a></div>
+                    <div><a href="#"><h2 class="aa">최고의 성공창업 아이템</h2></a></div>
+                    <div><a href="#"><h4 class="aa_a">치킨 사업이 매력적인 이유</h4></a></div>
+                    <div class="aa_b"><a href="#"><img src="images/창업정보2.png"></a></div>
+                    <div><a href="#"><h2 class="bb">BHC 치킨만의 강력함</h2></a></div>
+                    <div><a href="#"><h4 class="bb_a">차별화 된 제품 경쟁력</h4></a></div>
+                    <div class="bb_b"><a href="#"><img src="images/창업정보3.png"></a></div>
+                    <div><a href="#"><h2 class="cc">성공창업 지원</h2></a></div>
+                    <div><a href="#"><h4 class="cc_a">체계적인 본사 지원 시스템</h4></a></div>
+                    <div class="cc_b"><a href="#"><img src="images/창업정보4.png"></a></div>
+                </div>
+            </div>
+        </div>
+        <!--인스타-->
+        <div class="instar">
+            <div class="instalogo">
+                <div id="wrap">
+                    <a href="#"><img src="images/instalogo.png"></a>
+                    <div><a href="#"><h1><div class="c">BHC</div> OFFICIAL</h1></a></div>
+                    <div><a href="#"><h3>BHC를 만나는 또 하나의 방법</h3></a></div>
+                </div>
+            </div>
+            <div class ="instapic">
+                <a href="#" id="a"><img src="images/photo1.png"></a>
+                <a href="#" id="a"><img src="images/photo2.png"></a>
+                <a href="#" id="a"><img src="images/photo3.png"></a>
+                <a href="#" id="a"><img src="images/photo4.png"></a>
+                <a href="#" id="a"><img src="images/photo5.png"></a>
+                <a href="#" id="a"><img src="images/photo6.png"></a>
+                <a href="#" class="b"><img src="images/photo7.png"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer" class="clear">   <!--푸터 시작-->
+        <div id="footerTop">    <!--이용약관, 패밀리 사이트 -->
+            <div id="footer_line">
+                <div id="footer_menu">
+                    <ul>
+                        <li><a href="#">이용약관</a></li>
+                        <li>|</li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li>|</li>
+                        <li><a href="#">이메일무단수집거부</a></li>
+                        <li>|</li>
+                        <li><a href="#">사이트맵</a></li>
+                    </ul>
+                </div>
+                <div id="familysite">
+                    <select onchange="if(this.selectedIndex) {
+                        this.blur(); window.open(options[selectedIndex].value);}"
+                        id="familysite" name>
+                        <option value selected>패밀리사이트</option>
+                        <option value="#">BHC그룹</option>
+                        <option value="#">창고43</option>
+                        <option value="#">큰맘할매순대국</option>
+                        <option value="#">그램그램</option>
+                        <option value="#">족발상회</option>
+                    </select> 
+                </div>
+            </div>    
+        </div>
+        <div id="footerBottom">   <!--주소, sns -->
+            <div id="footer_info">
+                <ul>
+                    <li>(주)비에이치씨</li>
+                    <li>TEL 02-6204-3406</li>
+                    <li>FAX 02-6204-3484</li>
+                    <li>사업자등록번호 : 215-86-61559</li>
+                </ul>
+                <ul>
+                    <li>주소 : 서울시 송파구 올림픽로 299(신천동 7-23번지)대한제당B/D 2층</li>
+                    <li>통신판매업 : 제 2014-서울송파-0593호</li>
+                </ul>
+            </div>
+            <div id="footer_under">
+                <div id="footer_copyright">
+                    <ul>
+                        <li>COPYRIGHT (C) 2013 BHC ALL RIGHT RESERVED</li>
+                    </ul>
+                </div>
+                <div id="footer_sns">
+                    <ul>
+                        <li><a href="#"><img src="images/facebook.png"> 페이스북 </a></li>
+                        <li>|</li>
+                        <li><a href="#"><img src="images/instagram.png"> 인스타그램 </a></li>
+                        <li>|</li>
+                        <li><a href="#"><img src="images/kakao.png"> 카카오톡 </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="jquery/jquery-3.6.0.min.js"></script>
+<script>
+function navigo (){
+    const header = document.querySelector('.main_banner');
+    const headerheight = header.clientHeight;
+    document.addEventListener('scroll', onScroll, { passive: true });
+    
+    function onScroll () {
+        const scrollposition = pageYOffset;
+        const nav = document.querySelector('nav');
+        
+        if (headerheight<=scrollposition){
+            nav.classList.add('fix')
+        }
+        else {
+            nav.classList.remove('fix');
+        }
+    } 
+}
+navigo()
+</script>
+</body>
+</html>
