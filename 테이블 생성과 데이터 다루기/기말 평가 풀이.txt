@@ -1,0 +1,75 @@
+1번 문제 : 고객의 거주 국가(customers.country) 별로 판매(주문 금액 기준)
+
+1) 필요한 테이블은?
+ㄴcustomers[C], orderdetails[OD], orders[O]
+2) where 조건은? (join / 속성 필터 조건 필요한지)
+ㄴcustomers.c_id = orders.c_id and orders.o_id = orderdetails.o_id
+3) 집계 필요한가? (Group by)
+ㄴcountry[customers]
+4) 표시할 속성은?
+ㄴcountry[customers], sum(qty[orderdetails] * price[orderdetails]) as Total
+
+select C.country, sum(OD.qty * OD.price) as Total from customers C, orderdetails OD, orders O
+where C.c_id = O.c_id and O.o_id = OD.o_id group by country order by Total desc;
+
+-----------------------------------------------------------------------------------------------------------------
+
+2번 문제 : 월별/제품별 판매 수량. (연도 무관.. 2000년 8월, 2001년 8월 모두 8월 판매수량으로 합산)
+
+1) 필요한 테이블은?
+ㄴorders[O], orderdetails[OD]
+2) where 조건은? (join / 속성 필터 조건 필요한지)
+ㄴO.o_id = OD.o_id
+3) 집계 필요한가? (Group by)
+ㄴgroup by Month, OD.p_id
+4) 표시할 속성은?
+ㄴdate_format(O.o_date, '%M') as Month, OD.p_id, sum(OD.qty) as Total
+
+select OD.p_id as ProductID, date_format(O.o_date, '%m') as Month, sum(OD.qty) as Total
+from orders O, orderdetails OD where O.o_id = OD.o_id group by Month, OD.p_id order by Month;
+
+-------------------------------------------------------------------------------------------------------------------------
+
+3번 문제 : 영업 사원별 매출 (group by s_id 로 집계, 실적이 없는 영업 사원도 출력되어야 함 - 외부 조인)
+
+1) 필요한 테이블은?
+ㄴsales[S], customers[C], orders[O], orderdetails[OD]
+2) where 조건은? (join / 속성 필터 조건 필요한지)
+ㄴS.s_id = C.sales, C.c_id = O.c_id, O.o_id, OD.o_id
+3) 집계 필요한가? (Group by)
+ㄴgroup by Code
+4) 표시할 속성은?
+ㄴS.s_id[Code], S.s_name[Name], sum(OD.qty * OD.price)[Total]
+
+select S.s_id as Code , S.s_name as Name, sum(OD.qty * OD.price) as Total
+from sales S left join customers C on S.s_id = C.sales
+left join orders O on C.c_id = O.c_id left join orderdetails OD on O.o_id = OD.o_id
+group by Code order by Total desc;
+
+--------------------------------------------------------------------------------------------------------------------------
+
+4번 문제 : 사원번호 1088 인 영업관리자의 전체 매출 (시작점을 s_id = '1088'로 해서 재귀query 사용)
+
+1) 필요한 테이블은?
+ㄴsales[S], 재귀쿼리 TEST[T], orders[O], orderdetails[OD]
+2) where 조건은? (join / 속성 필터 조건 필요한지)
+ㄴjoin & 속성 필터 모두 필요
+3) 집계 필요한가? (Group by)
+ㄴs_id[ID], s_name[Name], s_mgr[ReportsTo]
+4) 표시할 속성은?
+ㄴs_id[ID], s_name[Name], coalesce(sum(sT.Total), 0)[Result]
+
+with recursive TEST as (
+select s_id, s_name, s_mgr from sales where s_id = 1088
+union
+select S.s_id, S.s_name, S.s_mgr
+from sales S, TEST T where S.s_mgr = T.s_id),
+subTEST as (
+select  T.s_id, T.s_name, T.s_mgr, coalesce(sum(OD.qty * OD.price), 0) as Total
+from TEST T
+left join customers C on T.s_id = C.sales
+left join orders O on C.c_id = O.c_id
+left join orderdetails OD on O.o_id = OD.o_id
+group by s_id, s_name, s_mgr)
+select T.s_id as ID, T.s_name as Name, coalesce(sum(sT.Total), 0) as Result
+from TEST T, subTEST sT where T.s_id = sT.s_id;
